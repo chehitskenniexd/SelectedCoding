@@ -4,7 +4,8 @@
   "description": "code challenge for selected",
   "main": "webpack.config.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "webpack -w & nodemon server.js"
   },
   "repository": {
     "type": "git",
