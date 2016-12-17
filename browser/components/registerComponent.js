@@ -33,6 +33,13 @@ export default class SignupComponent extends React.Component {
                         </div>
                     </div>
 
+                    <div className="form-group row">
+                        <label className="col-xs-2 col-form-label">School</label>
+                        <div className="col-xs-10">
+                            <input className="form-control" type="text" placeholder="Brooklyn Technical High School" id="example-text-input" />
+                        </div>
+                    </div>
+
                     <button className="btn btn-outline-success float-md-right"type="button">Submit</button>
                 </div>
             </div>
