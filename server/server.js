@@ -15,6 +15,8 @@ app.use(volleyball);
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+app.use('/api', require('./routes/api'));
+
 app.get('*', function (req, res) {
     res.sendFile(`${__dirname}/../public/index.html`);
 })
