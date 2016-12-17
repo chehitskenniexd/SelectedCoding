@@ -1,6 +1,7 @@
 'use strict'
 
 import React from 'react';
+import axios from 'axios';
 
 export default class SignupComponent extends React.Component {
   constructor(props) {
@@ -17,6 +18,12 @@ export default class SignupComponent extends React.Component {
   onHandleSubmit(event) {
     event.preventDefault();
     console.log('submit');
+    axios.post('/api', {
+      firstName: this.state.firstName,
+      lastName: this.state.lastName,
+      email: this.state.email,
+      schoolName: this.state.school
+    })
   }
 
   onHandleChange(prop, event) {
@@ -43,21 +50,24 @@ export default class SignupComponent extends React.Component {
             <div className="form-group row">
               <label className="col-xs-2 col-form-label">Last Name</label>
               <div className="col-xs-10">
-                <input className="form-control" type="text" placeholder="Moy" id="lastName-input" />
+                <input className="form-control" type="text" placeholder="Moy"
+                  onChange={(event) => { this.onHandleChange('lastName', event) } } id="lastName-input" />
               </div>
             </div>
 
             <div className="form-group row">
               <label className="col-xs-2 col-form-label">Email</label>
               <div className="col-xs-10">
-                <input className="form-control" type="email" placeholder="moykenneth91@gmail.com" id="email-input" />
+                <input className="form-control" type="email" placeholder="moykenneth91@gmail.com"
+                  onChange={(event) => { this.onHandleChange('email', event) } } id="email-input" />
               </div>
             </div>
 
             <div className="form-group row">
               <label className="col-xs-2 col-form-label">School</label>
               <div className="col-xs-10">
-                <input className="form-control" type="text" placeholder="Brooklyn Technical High School" id="school-input" />
+                <input className="form-control" type="text" placeholder="Brooklyn Technical High School"
+                  onChange={(event) => { this.onHandleChange('school', event) } } id="school-input" />
               </div>
             </div>
 

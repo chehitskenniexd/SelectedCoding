@@ -4,8 +4,8 @@ const Sequelize = require('sequelize');
 const db = require('../db');
 
 const Registered = db.define('registered', {
-    first_name: Sequelize.STRING,
-    last_name: Sequelize.STRING,
+    firstName: Sequelize.STRING,
+    lastName: Sequelize.STRING,
     email: {
         type: Sequelize.STRING,
         validate: {
@@ -15,6 +15,7 @@ const Registered = db.define('registered', {
     },
     schoolName: Sequelize.STRING,
     contactedOn: Sequelize.DATE,
+    messageId: Sequelize.STRING,
     bounceType: Sequelize.JSON
 }) //end db.define
 
