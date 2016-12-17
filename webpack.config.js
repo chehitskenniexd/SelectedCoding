@@ -13,16 +13,8 @@ module.exports = {
   resolve: {
     extensions: ['', '.js', '.json']
   },
-  node:
-  {
-    "child_process": "empty"
-  },
   module: {
     loaders: [
-      {
-        test: /\.json$/,
-        loader: 'json-loader'
-      },
       {
         test: /js$/,
         exclude: /node_modules/,
