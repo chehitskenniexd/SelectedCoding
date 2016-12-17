@@ -62,9 +62,9 @@
 	
 	var _store2 = _interopRequireDefault(_store);
 	
-	var _mainComponent = __webpack_require__(278);
+	var _navbarComponent = __webpack_require__(278);
 	
-	var _mainComponent2 = _interopRequireDefault(_mainComponent);
+	var _navbarComponent2 = _interopRequireDefault(_navbarComponent);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -75,7 +75,7 @@
 	    _react2.default.createElement(
 	        _reactRouter.Router,
 	        { history: _reactRouter.browserHistory },
-	        _react2.default.createElement(_reactRouter.Route, { path: '/', component: _mainComponent2.default })
+	        _react2.default.createElement(_reactRouter.Route, { path: '/', component: _navbarComponent2.default })
 	    )
 	), document.getElementById('main'));
 
@@ -29726,14 +29726,73 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	exports.default = function () {
-	    console.log('hello!');
 	    return _react2.default.createElement(
-	        'div',
-	        { className: 'container' },
+	        'nav',
+	        { className: 'navbar navbar-light', style: { 'backgroundColor': '#F48020' } },
 	        _react2.default.createElement(
-	            'div',
-	            null,
-	            'Hello!'
+	            'a',
+	            { className: 'navbar-brand', href: '/' },
+	            'Navbar'
+	        ),
+	        _react2.default.createElement(
+	            'ul',
+	            { className: 'nav navbar-nav' },
+	            _react2.default.createElement(
+	                'li',
+	                { className: 'nav-item' },
+	                _react2.default.createElement(
+	                    'a',
+	                    { className: 'nav-link', href: 'https://www.getselected.co/' },
+	                    'Selected'
+	                )
+	            ),
+	            _react2.default.createElement(
+	                'li',
+	                { className: 'nav-item dropdown' },
+	                _react2.default.createElement(
+	                    'a',
+	                    { className: 'nav-link dropdown-toggle', href: 'http://example.com', id: 'supportedContentDropdown',
+	                        'data-toggle': 'dropdown', 'aria-haspopup': 'true', 'aria-expanded': 'false' },
+	                    'Dropdown'
+	                ),
+	                _react2.default.createElement(
+	                    'div',
+	                    { className: 'dropdown-menu', 'aria-labelledby': 'supportedContentDropdown' },
+	                    _react2.default.createElement(
+	                        'a',
+	                        { className: 'dropdown-item', href: '#' },
+	                        'Action'
+	                    ),
+	                    _react2.default.createElement(
+	                        'a',
+	                        { className: 'dropdown-item', href: '#' },
+	                        'Another action'
+	                    ),
+	                    _react2.default.createElement(
+	                        'a',
+	                        { className: 'dropdown-item', href: '#' },
+	                        'Something else here'
+	                    )
+	                )
+	            ),
+	            _react2.default.createElement(
+	                'li',
+	                { className: 'nav-item float-md-right' },
+	                _react2.default.createElement(
+	                    'a',
+	                    { className: 'nav-link', href: '/' },
+	                    'Sign Up'
+	                )
+	            ),
+	            _react2.default.createElement(
+	                'li',
+	                { className: 'nav-item float-md-right' },
+	                _react2.default.createElement(
+	                    'a',
+	                    { className: 'nav-link', href: '/' },
+	                    'Login'
+	                )
+	            )
 	        )
 	    );
 	};
