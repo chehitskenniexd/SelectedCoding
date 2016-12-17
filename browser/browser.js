@@ -8,6 +8,7 @@ import { connect, Provider } from 'react-redux';
 import store from './store';
 import navbarComponent from './components/navbarComponent';
 import registerComponent from './components/registerComponent';
+import showRegisteredComponent from './components/showRegisteredComponent';
 
 // Still need to import the store and a component to render to the screen
 ReactDOM.render(
@@ -15,6 +16,7 @@ ReactDOM.render(
         <Router history={browserHistory}>
             <Route path="/" component={navbarComponent}>
                 <IndexRoute component={registerComponent} />
+                <Route path="registered" component={showRegisteredComponent} />
             </Route>
         </Router>
     </Provider>,

@@ -30,6 +30,12 @@ export default class SignupComponent extends React.Component {
     this.setState({ [prop]: event.target.value });
   }
 
+  componentWillMount() {
+    axios.post('/api/loadCSV')
+      .then(res => console.log(res))
+      .catch(err => console.error(err));
+  }
+
   render() {
     return (
       <div id="register-container">
@@ -71,7 +77,7 @@ export default class SignupComponent extends React.Component {
               </div>
             </div>
 
-            <input className="btn btn-outline-success float-md-right" type="submit" value="Submit" />
+            <input className="btn btn-outline-success" style={{ float: 'right' }} type="submit" value="Submit" />
           </div>
         </form>
       </div>

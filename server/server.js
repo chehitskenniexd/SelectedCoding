@@ -3,6 +3,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const volleyball = require('volleyball');
+const path = require('path');
 
 // initialize the application
 const app = express();
@@ -18,7 +19,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use('/api', require('./routes/api'));
 
 app.get('*', function (req, res) {
-    res.sendFile(`${__dirname}/../public/index.html`);
+  res.sendFile(path.resolve(__dirname, '../public/index.html'))
 })
 
 const db = require('./database');

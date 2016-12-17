@@ -9,6 +9,9 @@ const serverToken = `5933bac0-e9ed-4974-9d46-c51f3ea81ca9`;
 var client = new postmark.Client('POSTMARK_API_TEST');
 const Registered = require('../database/models/modelsIndex').Registered;
 
+const fs = require('fs');
+const path = require('path');
+
 router.post('/', (req, res, next) => {
   console.log(req.body);
   const message = `Hi ${req.body.firstName}
@@ -63,6 +66,12 @@ router.get('/registered', (req, res, next) => {
       res.json(allRegistered);
     })
     .catch(err => console.error(err));
+})
+
+router.post('/loadCSV', (req, res, next) => {
+  const info = fs.readFileSync(
+    path.resolve(__dirname, '../../public/mockTeacherContactData.csv'), 'utf-8');
+  console.log(info);
 })
 
 module.exports = router;

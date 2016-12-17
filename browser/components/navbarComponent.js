@@ -15,8 +15,8 @@ export default (props) => {
                         <a className="nav-link dropdown-toggle" href="http://example.com" id="supportedContentDropdown"
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
                         <div className="dropdown-menu" aria-labelledby="supportedContentDropdown">
-                            <a className="dropdown-item" href="#">Action</a>
-                            <a className="dropdown-item" href="#">Another action</a>
+                            <a className="dropdown-item" href="/registered">Show Registered</a>
+                            <a className="dropdown-item" >Load CSV</a>
                             <a className="dropdown-item" href="#">Something else here</a>
                         </div>
                     </li>
