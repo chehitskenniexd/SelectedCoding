@@ -19,6 +19,8 @@ app.get('*', function (req, res) {
     res.sendFile(`${__dirname}/../public/index.html`);
 })
 
+const db = require('./database');
+
 // begin listening on port 3000
 app.listen(3000, function () {
     console.log('Server listening on port', 3000);
