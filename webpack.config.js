@@ -1,4 +1,3 @@
-
 'use strict';
 
 var webpack = require('webpack');
@@ -11,6 +10,9 @@ module.exports = {
   },
   context: __dirname,
   devtool: 'source-map',
+  resolve:{
+    extensions: ['', '.js']
+  },
   module: {
     loaders: [
       {
