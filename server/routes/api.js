@@ -47,7 +47,7 @@ Thanks for listening!`
     Registered.create(Object.assign(req.body, {}, {
       messageId,
       contactedOn
-    })) 
+    }))
       .then(registered => {
 
       })
@@ -57,6 +57,12 @@ Thanks for listening!`
   })
 })
 
-router.get('/')
+router.get('/registered', (req, res, next) => {
+  Registered.findAll()
+    .then(allRegistered => {
+      res.json(allRegistered);
+    })
+    .catch(err => console.error(err));
+})
 
 module.exports = router;
