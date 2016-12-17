@@ -6,10 +6,10 @@ export default (props) => {
     return (
         <div id="navbar-container">
             <nav className="navbar navbar-light" style={{ 'backgroundColor': '#F48020' }}>
-                <a className="navbar-brand" href="/">Navbar</a>
+                <a className="navbar-brand" href="/">Selected</a>
                 <ul className="nav navbar-nav">
                     <li className="nav-item">
-                        <a className="nav-link" href="https://www.getselected.co/">Selected</a>
+                        <a className="nav-link" href="https://www.getselected.co/">Main Site</a>
                     </li>
                     <li className="nav-item dropdown">
                         <a className="nav-link dropdown-toggle" href="http://example.com" id="supportedContentDropdown"
