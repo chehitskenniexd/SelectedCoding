@@ -2,6 +2,10 @@
 
 import React from 'react';
 
+// Get postmark to be used
+import postmark from 'postmark';
+
+
 export default class SignupComponent extends React.Component {
   constructor(props) {
     super(props);

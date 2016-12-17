@@ -10,11 +10,19 @@ module.exports = {
   },
   context: __dirname,
   devtool: 'source-map',
-  resolve:{
-    extensions: ['', '.js']
+  resolve: {
+    extensions: ['', '.js', '.json']
+  },
+  node:
+  {
+    "child_process": "empty"
   },
   module: {
     loaders: [
+      {
+        test: /\.json$/,
+        loader: 'json-loader'
+      },
       {
         test: /js$/,
         exclude: /node_modules/,
