@@ -9,6 +9,7 @@ import store from './store';
 import navbarComponent from './components/navbarComponent';
 import registerComponent from './components/registerComponent';
 import showRegisteredComponent from './components/showRegisteredComponent';
+import registeredComponent from './components/registeredComponent';
 
 // Still need to import the store and a component to render to the screen
 ReactDOM.render(
@@ -17,6 +18,7 @@ ReactDOM.render(
             <Route path="/" component={navbarComponent}>
                 <IndexRoute component={registerComponent} />
                 <Route path="registered" component={showRegisteredComponent} />
+                <Route path="thanks" component={registeredComponent} />
             </Route>
         </Router>
     </Provider>,
