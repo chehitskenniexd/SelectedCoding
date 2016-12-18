@@ -17,7 +17,12 @@ export default class showRegisteredComponent extends React.Component {
       .then(res => {
         this.setState({ registered: res.data });
       })
-      .then()
+      .then(() => {
+        axios.get('/api/bounce')
+          .then(res => {
+            console.log(res);
+          })
+      })
       .catch(err => console.log(err));
   }
 

@@ -69,6 +69,22 @@ router.get('/registered', (req, res, next) => {
     .catch(err => console.error(err));
 })
 
+router.get('/bounce', (req, res, next) => {
+  let bounceArray = [];
+  axios.get('https://api.postmarkapp.com/bounces?inactive=true&count=500&offset=0',
+    {
+      headers: {
+        'X-Postmark-Server-Token': '5933bac0-e9ed-4974-9d46-c51f3ea81ca9',
+        'Content-Type': 'application/json'
+      }
+    })
+    .then(results => {
+      const bounces = results.data.Bounces;
+      res.json(results.data.Bounces)
+    })
+    .catch(err => console.error(err));
+})
+
 router.post('/loadCSV', (req, res, next) => {
   // load in all the teacherData and then store it into objects
   const info = fs.readFileSync(
@@ -110,8 +126,8 @@ Thanks for listening!`
       if (error) {
         console.error('Error: ' + error.message)
         return Registered.create(obj)
-        .then(result => result)
-        .catch(err => console.error(err));;
+          .then(result => result)
+          .catch(err => console.error(err));;
       }
       const contactedOn = result.SubmittedAt;
       const messageId = result.MessageID;

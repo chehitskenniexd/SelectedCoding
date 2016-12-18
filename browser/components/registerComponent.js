@@ -13,6 +13,7 @@ export default class SignupComponent extends React.Component {
       school: ''
     }
     this.onHandleSubmit = this.onHandleSubmit.bind(this);
+    this.onHandleCSVClick = this.onHandleCSVClick.bind(this);
   }
 
   onHandleSubmit(event) {
@@ -30,7 +31,7 @@ export default class SignupComponent extends React.Component {
     this.setState({ [prop]: event.target.value });
   }
 
-  componentWillMount() {
+  onHandleCSVClick(event) {
     axios.post('/api/loadCSV')
       .then(res => console.log(res))
       .catch(err => console.error(err));
@@ -77,6 +78,7 @@ export default class SignupComponent extends React.Component {
               </div>
             </div>
 
+            <button className="btn btn-outline-warning" onClick={this.onHandleCSVClick}>Load CSV</button>
             <input className="btn btn-outline-success" style={{ float: 'right' }} type="submit" value="Submit" />
           </div>
         </form>
