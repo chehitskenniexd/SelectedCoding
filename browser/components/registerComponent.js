@@ -20,12 +20,12 @@ export default class SignupComponent extends React.Component {
   onHandleSubmit(event) {
     event.preventDefault();
     console.log('submit');
-    // axios.post('/api', {
-    //   firstName: this.state.firstName,
-    //   lastName: this.state.lastName,
-    //   email: this.state.email,
-    //   schoolName: this.state.school
-    // })
+    axios.post('/api', {
+      firstName: this.state.firstName,
+      lastName: this.state.lastName,
+      email: this.state.email,
+      schoolName: this.state.school
+    })
     event.target.reset();
     browserHistory.push('/thanks');
   }
