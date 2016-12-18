@@ -11,6 +11,7 @@ const Registered = require('../database/models/modelsIndex').Registered;
 
 const fs = require('fs');
 const path = require('path');
+const Promise = require('bluebird');
 
 router.post('/', (req, res, next) => {
   console.log(req.body);
@@ -69,9 +70,64 @@ router.get('/registered', (req, res, next) => {
 })
 
 router.post('/loadCSV', (req, res, next) => {
+  // load in all the teacherData and then store it into objects
   const info = fs.readFileSync(
     path.resolve(__dirname, '../../public/mockTeacherContactData.csv'), 'utf-8');
-  console.log(info);
+  const infoArray = info.split('\r\n'); // 'firstName,lastName,email,schoolName' for index [0];
+  const infoColumns = infoArray.shift().split(',');
+  const infoObjs = infoArray.map(info => {
+    let obj = {};
+    const teacherData = info.split(',');
+    infoColumns.forEach((col, index) => {
+      obj[col] = teacherData[index]
+    })
+    return obj;
+  })
+
+  // for each piece of data, send an email as well as store it into the db
+  const infoPromises = infoObjs.map(obj => {
+    const message = `Hi ${obj.firstName}
+ 
+Selected (www.getselected.co) is a new platform for NYC teachers to match with schools and jobs you love.
+ 
+We do this two ways:
+ 
+1) Find your 'best fit' NYC school matches in < 2 minutes with our preference matching engine (e.g., Bronx, low income, diverse, non-charter)
+ 
+2) Complete a short common app and be introduced to leading public and private schools in NYC. Schools are always hiring!
+ 
+We also offer free workshops and events in NYC every month, you can check our event page at getselected.eventbrite.com
+ 
+Finally, do you know friends looking for teaching jobs? We offer a $250 referral bonus to both you and your referral if your friend is hired through the Selected platform. Learn more here: www.getselected.co/referral
+ 
+Thanks for listening!`
+    return client.sendEmail({
+      "From": "chehitskenniexd@fullsail.edu",
+      "To": obj.email,
+      "Subject": "Thank you for registering with Selected!",
+      "TextBody": message
+    }, function (error, result) {
+      if (error) {
+        console.error('Error: ' + error.message)
+        return Registered.create(obj)
+        .then(result => result)
+        .catch(err => console.error(err));;
+      }
+      const contactedOn = result.SubmittedAt;
+      const messageId = result.MessageID;
+
+      return Registered.create(Object.assign(obj, {}, {
+        messageId,
+        contactedOn
+      }))
+        .then(result => result)
+        .catch(err => console.error(err));
+    })
+  })
+
+  Promise.all(infoPromises)
+    .then(() => res.status(201))
+    .catch(err => console.error(err));
 })
 
 module.exports = router;

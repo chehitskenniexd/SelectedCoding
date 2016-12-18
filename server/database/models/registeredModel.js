@@ -8,10 +8,7 @@ const Registered = db.define('registered', {
     lastName: Sequelize.STRING,
     email: {
         type: Sequelize.STRING,
-        validate: {
-            isEmail: true,
-            notEmpty: true   
-        }
+
     },
     schoolName: Sequelize.STRING,
     contactedOn: Sequelize.DATE,
