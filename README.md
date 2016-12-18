@@ -7,11 +7,12 @@ This project is a basic CRUD app that uses:
 It uses webpack as a compiler.
 
 In order to run this project, do the following:
->npm install
->npm run start
+```javascript
+npm install
+npm run start
+```
 
-Also required:
->Create a db named "selectedCoding" in postgres
+Also required is to create a db named "selectedCoding" in postgres
 
 This should allow you to run the project.
 The base page is a simple registration page that is linked to postmark.
