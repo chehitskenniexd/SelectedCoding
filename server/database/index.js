@@ -9,7 +9,7 @@ require('./models/modelsIndex');
 const name = `selectedCoding`;
 const url = `postgres://localhost:5432/${name}`;
 
-db.sync({ force: true })
+db.sync({ force: false })
   .then(() => console.log(`Synced models to db ${name}`))
   .catch(() => {
     console.log(`Creating db ${name}`);

@@ -6,7 +6,8 @@ const axios = require('axios');
 
 const postmark = require('postmark');
 const serverToken = `5933bac0-e9ed-4974-9d46-c51f3ea81ca9`;
-var client = new postmark.Client('POSTMARK_API_TEST');
+// var client = new postmark.Client('POSTMARK_API_TEST');
+var client = new postmark.Client(serverToken);
 const Registered = require('../database/models/modelsIndex').Registered;
 
 const fs = require('fs');
@@ -80,6 +81,21 @@ router.get('/bounce', (req, res, next) => {
     })
     .then(results => {
       const bounces = results.data.Bounces;
+      bounces.map(bounce => {
+        return Registered.findOne(
+          {
+            where: {
+              messageId: bounce.messageID,
+            }
+          }
+        )
+          .then(result => {
+            if (result) {
+              result.updateAttributes({ bounceType: bounce.Type })
+            }
+          })
+          .catch(err => console.error(err));
+      })
       res.json(results.data.Bounces)
     })
     .catch(err => console.error(err));

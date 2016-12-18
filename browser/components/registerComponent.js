@@ -25,6 +25,7 @@ export default class SignupComponent extends React.Component {
       email: this.state.email,
       schoolName: this.state.school
     })
+    event.target.reset();
   }
 
   onHandleChange(prop, event) {
@@ -49,7 +50,7 @@ export default class SignupComponent extends React.Component {
             <div className="form-group row">
               <label className="col-xs-2 col-form-label">First Name</label>
               <div className="col-xs-10">
-                <input className="form-control" type="text" placeholder="Kenneth"
+                <input className="form-control" type="text" placeholder="First Name"
                   onChange={(event) => { this.onHandleChange('firstName', event) } } id="firstName-input" />
               </div>
             </div>
@@ -57,7 +58,7 @@ export default class SignupComponent extends React.Component {
             <div className="form-group row">
               <label className="col-xs-2 col-form-label">Last Name</label>
               <div className="col-xs-10">
-                <input className="form-control" type="text" placeholder="Moy"
+                <input className="form-control" type="text" placeholder="Last Name"
                   onChange={(event) => { this.onHandleChange('lastName', event) } } id="lastName-input" />
               </div>
             </div>
@@ -65,7 +66,7 @@ export default class SignupComponent extends React.Component {
             <div className="form-group row">
               <label className="col-xs-2 col-form-label">Email</label>
               <div className="col-xs-10">
-                <input className="form-control" type="email" placeholder="moykenneth91@gmail.com"
+                <input className="form-control" type="email" placeholder="email@domain.com"
                   onChange={(event) => { this.onHandleChange('email', event) } } id="email-input" />
               </div>
             </div>
@@ -73,15 +74,17 @@ export default class SignupComponent extends React.Component {
             <div className="form-group row">
               <label className="col-xs-2 col-form-label">School</label>
               <div className="col-xs-10">
-                <input className="form-control" type="text" placeholder="Brooklyn Technical High School"
+                <input className="form-control" type="text" placeholder="School Name"
                   onChange={(event) => { this.onHandleChange('school', event) } } id="school-input" />
               </div>
             </div>
 
-            <button className="btn btn-outline-warning" onClick={this.onHandleCSVClick}>Load CSV</button>
             <input className="btn btn-outline-success" style={{ float: 'right' }} type="submit" value="Submit" />
           </div>
         </form>
+        <div className="container">
+          <button className="btn btn-outline-warning" style={{ float: 'right' }} onClick={this.onHandleCSVClick}>Load CSV</button>
+        </div>
       </div>
     );
   }

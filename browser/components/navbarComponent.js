@@ -11,13 +11,8 @@ export default (props) => {
                     <li className="nav-item">
                         <a className="nav-link" href="https://www.getselected.co/">Selected Site</a>
                     </li>
-                    <li className="nav-item dropdown">
-                        <a className="nav-link dropdown-toggle" href="http://example.com" id="supportedContentDropdown"
-                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Options</a>
-                        <div className="dropdown-menu" aria-labelledby="supportedContentDropdown">
-                            <a className="dropdown-item" href="/registered">Show Registered</a>
-                            <a className="dropdown-item" >Load CSV</a>
-                        </div>
+                    <li className="nav-item">
+                        <a className="nav-link" href="/registered" >Show Registered</a>
                     </li>
                     <li className="nav-item float-md-right">
                         <a className="nav-link" href="/">Sign Up</a>

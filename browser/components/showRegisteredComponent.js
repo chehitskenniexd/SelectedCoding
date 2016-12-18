@@ -56,7 +56,9 @@ export default class showRegisteredComponent extends React.Component {
                         <td>{registered.contactedOn
                           ? new Date(registered.contactedOn).toLocaleString()
                           : ''}</td>
-                        <td>{registered.bounceType}</td>
+                        <td>{registered.bounceType 
+                          ? registered.bounceType 
+                          : (registered.email ? "Succeeded!" : '')}</td>
                       </tr>);
                     })
                   }
